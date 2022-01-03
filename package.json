@@ -1,0 +1,39 @@
+{
+  "name": "full-final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.7",
+    "axios": "^0.21.1",
+    "base64url": "^3.0.1",
+    "bcrypt": "^5.0.1",
+    "consolidate": "^0.16.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.1.0",
+    "express-session": "^1.17.2",
+    "googleapis": "^92.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.14",
+    "multer": "^1.4.3",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "redis": "^3.1.2",
+    "response-time": "^2.3.2",
+    "socket.io": "^4.4.0",
+    "stripe": "^8.186.1",
+    "swig": "^1.4.2",
+    "twilio": "^3.68.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
