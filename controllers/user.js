@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Comment = require('../models/comment')
 const bcrypt = require('bcrypt');
 const issueJWT = require('../helpers/jwt');
 const axios  = require('axios');
@@ -53,11 +54,9 @@ module.exports = {
     protected: async(req,res)=>{
         res.status(200).json({ success: true, msg: serializeUser(req.user)});
     },
-
     callBackTest : async (req,res)=>{
         res.render('callback')
     },
-
     rediscaching : async (req,res)=>{
         const client = redis.createClient({
             host:'127.0.0.1',
@@ -85,6 +84,24 @@ module.exports = {
         } catch(err) {
             res.status(500).send({message: err.message});
         } 
+    },
+    addComment: async (req,res)=>{
+        try {
+            const {content} = req.body;
+            const comment = await Comment({content});
+            await comment.save();
+            return res.status(200).json({success:true,message:'a comment has been added!'})
+        } catch (error) {
+            return res.status(500).json({success:false,message:'error'})
+        }
+    },
+    getAllComment: async (req,res)=>{
+        try {
+            const comments = await Comment.find();
+            return res.status(200).json({success:true,message:comments})
+        } catch (error) {
+            return res.status(500).json({success:true,message:error})
+        }
     }
 }
 

@@ -1,7 +1,8 @@
 const express    = require('express');
 const app        = express();
+const cors       = require('cors')
 const path       = require('path');
-const passport = require('passport');
+const passport   = require('passport');
 require('dotenv').config();
 const responseTime = require('response-time');
 
@@ -15,6 +16,7 @@ const sheet    = require('./routes/sheet');
 const dbConfig   = require('./configuration/db');
 dbConfig.connection;
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(responseTime());
@@ -32,8 +34,8 @@ app.use('/sheet',sheet);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-const server = app.listen(3000,()=>{
-    console.log(`Server is running on http://localhost:3000`)
+const server = app.listen(4000,()=>{
+    console.log(`Server is running on http://localhost:4000`)
 });
 
 const io = require('socket.io')(server);
